@@ -7,8 +7,9 @@ test('it renders dashboard correctly', () => {
     expect(render(<Dashboard />)).toMatchSnapshot()
 })
 
-// test('dashboard is default open closed', () => {
-//     const { getByText } = render(<Dashboard />)
-//     getByText(/open/i)
-//     })
+test('dashboard is default open unlocked', () => {
+    const { getByText } = render(<Dashboard />)
+    getByText(/open/i)
+    getByText(/unlocked/i)
+    })
 
