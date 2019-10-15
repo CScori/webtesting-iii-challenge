@@ -10,13 +10,22 @@ test('gate change when close gate clicked', () => {
 const closeGateMock = jest.fn()
 const { getByText } = render(<Controls closed={closeGateMock}/>)
 
-fireEvent.click(getByText(/locked/i))
+fireEvent.click(getByText(/closed/i))
 
 expect(closeGateMock).toHaveBeenCalled()
 expect(closeGateMock).toHaveBeenCalledTimes(1)
 })
 
-// provide buttons to toggle the closed and locked states.
-// buttons' text changes to reflect the state the door will be in if clicked
+
+test('lock change when lock gate clicked', () => {
+    const lockGateMock = jest.fn()
+    const { getByText } = render(
+        <Controls locked={lockGateMock}/>
+    )
+fireEvent.click(getByText(/locked/i))
+expect(lockGateMock).toHaveBeenCalled()
+expect(lockGateMock).toHaveBeenCalledTimes(1)
+fireEvent.click()
+})
 // the closed toggle button is disabled if the gate is locked
 // the locked toggle button is disabled if the gate is open
